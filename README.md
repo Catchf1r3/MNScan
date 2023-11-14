@@ -22,14 +22,13 @@ masscan+nmap，结合了massacn的快速扫描和nmap精准识别端口的特点
 
 # 使用方法
 python MNScan.py -h
-
-
-usage: MNScan.py [-h] [-i TARGET] [-f TARGET] [-o OUTPUT_FILE_PATH] [-r RATE]
+    
+    usage: MNScan.py [-h] [-i TARGET] [-f TARGET] [-o OUTPUT_FILE_PATH] [-r RATE]
                  [-p PORTS]
                  
-Run Masscan with custom parameters
+    Run Masscan with custom parameters
 
-optional arguments:
+    optional arguments:
   
     -h, --help            show this help message and exit
   
