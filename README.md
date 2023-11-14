@@ -2,7 +2,7 @@
 masscan+nmap，结合了massacn的快速扫描和nmap精准识别端口的特点，自动识别http/https端口生成URL。
 # python3编写
 # 如果你的masscan和nmap如果在环境变量里，请直接跳过这一条，不在环境变量里的话需要按下面操作配置一下
-这两个地方需要手动配置下：
+这两个地方需要手动配置下：\n
 #masscan
     masscan_path = "/usr/local/bin/masscan"  # 替换为自己的 masscan 路径，再将下面的"masscan"替换为masscan_path  
     # 根据输入参数类型构建 masscan 命令
