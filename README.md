@@ -47,15 +47,15 @@ python MNScan.py -h
                         Port range (default: 1-65535)
 # 使用示例
                         
-python MNScan.py -i 192.168.1.1  #直接输入ip，支持格式192.168.1.1,192.168.2.1/24,192.168.1.1-192.168.1.255
+python MNScan.py -i 192.168.1.1             #直接输入ip，支持格式192.168.1.1,192.168.2.1/24,192.168.1.1-192.168.1.255
 
-python MNScan.py -f ip.txt  #扫描ip文件，每行为一个ip对象
+python MNScan.py -f ip.txt                  #扫描ip文件，每行为一个ip对象
 
 python MNScan.py -i 192.168.1.1 -o out.txt  #指定输出文件，默认输出为output.txt，输出masscan的json形式结果和nmap全部结果
 
-python MNScan.py -i 192.168.1.1 -r 1000  #指定masscan扫描速率，默认为1000，速率设置太高可能导致masscan扫描结果不全
+python MNScan.py -i 192.168.1.1 -r 1000     #指定masscan扫描速率，默认为1000，速率设置太高可能导致masscan扫描结果不全
 
-python MNScan.py -i 192.168.1.1 -p 1000  #指定扫描端口，默认为1-65535
+python MNScan.py -i 192.168.1.1 -p 1000     #指定扫描端口，默认为1-65535
 
 #  输出结果
 端口识别
