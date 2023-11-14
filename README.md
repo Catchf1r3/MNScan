@@ -39,7 +39,7 @@ optional arguments:
     -f TARGET, --file TARGET
                         File containing target IPs (one per line)
   
-      -o OUTPUT_FILE_PATH, --output OUTPUT_FILE_PATH
+    -o OUTPUT_FILE_PATH, --output OUTPUT_FILE_PATH
                         Output file path,default output.txt
   
     -r RATE, --rate RATE  Scan rate,dafault 1000
