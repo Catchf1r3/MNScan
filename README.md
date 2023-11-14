@@ -48,7 +48,7 @@ optional arguments:
                         Port range (default: 1-65535)
 # 使用示例
                         
-python MNScan.py -i 192.168.1.1  #直接输入ip，支持格式192.168.1.1,192.168.2.1/24,42.193.1.27-42.193.1.30
+python MNScan.py -i 192.168.1.1  #直接输入ip，支持格式192.168.1.1,192.168.2.1/24,192.168.1.1-192.168.1.255
 
 python MNScan.py -f ip.txt  #扫描ip文件，每行为一个ip对象
 
