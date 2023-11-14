@@ -31,20 +31,20 @@ Run Masscan with custom parameters
 
 optional arguments:
   
-  -h, --help            show this help message and exit
+    -h, --help            show this help message and exit
   
-  -i TARGET, --ip TARGET
+    -i TARGET, --ip TARGET
                         Single target IP address
   
-  -f TARGET, --file TARGET
+    -f TARGET, --file TARGET
                         File containing target IPs (one per line)
   
-  -o OUTPUT_FILE_PATH, --output OUTPUT_FILE_PATH
+      -o OUTPUT_FILE_PATH, --output OUTPUT_FILE_PATH
                         Output file path,default output.txt
   
-  -r RATE, --rate RATE  Scan rate,dafault 1000
+    -r RATE, --rate RATE  Scan rate,dafault 1000
   
-  -p PORTS, --ports PORTS
+    -p PORTS, --ports PORTS
                         Port range (default: 1-65535)
 # 使用示例
                         
