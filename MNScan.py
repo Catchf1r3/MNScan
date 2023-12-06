@@ -18,6 +18,7 @@ def parse_masscan_output(masscan_output):
         print("Problematic content:", masscan_output)
         return None
 
+    # 使用 defaultdict 创建一个以 IP 为键的字典，值是该 IP 对应的端口列表
     ip_ports_mapping = defaultdict(list)
 
     for result in results:
@@ -34,16 +35,20 @@ def nmap_scan(ip, ports, output_file_path):
     nmap_cmd = ["nmap", ip, "-p", ports_str, "-sV", "-Pn", "-oN", output_file_path, "--append-output"]
     subprocess.run(nmap_cmd, check=True)
 
+    # 读取 nmap 输出文件
     with open(output_file_path, 'r') as f:
         nmap_output = f.read()
 
+    #匹配当前 ip 的nmap输出
     pattern = rf'Nmap scan report for {re.escape(ip)}([\s\S]*?)Nmap done at'
     matches = re.findall(pattern, nmap_output)
 
+    # 匹配 https和http 端口信息
     for match in matches:
         https_ports = re.findall(r'(\d+)/tcp\s+open\s+.*ssl.*\n', match)
         http_ports = re.findall(r'(\d+)/tcp\s+open\s+http', match)
 
+    # 格式化 https 端口信息，并追加到输出文件
     if https_ports:
         with open(output_file_path, 'a') as f:
             print(f"\nHTTPS Services:")
@@ -52,6 +57,7 @@ def nmap_scan(ip, ports, output_file_path):
                 print(f"\033[92mhttps://{ip}:{port}\033[0m")
                 f.write(f"https://{ip}:{port}\n")
 
+    # 格式化 http 端口信息，并追加到输出文件
     if http_ports:
         with open(output_file_path, 'a') as f:
             print(f"\nHTTP Services:")
@@ -64,11 +70,13 @@ def run_masscan(output_file_path, target, ports, rate):
     masscan_path = "/usr/local/bin/masscan"
     masscan_output = ""  # Initialize masscan_output here
 
+    # 根据输入参数类型构建 masscan 命令
     if is_valid_ip(target):
         masscan_cmd = ["masscan", target, "--ports", ports, "-oJ", output_file_path, "--rate", rate]
     else:
         masscan_cmd = ["masscan", "-iL", target, "--ports", ports, "-oJ", output_file_path, "--rate", rate]
 
+    # 调用 masscan 命令
     try:
         subprocess.run(masscan_cmd, check=True)
         print("Masscan completed successfully.")
@@ -80,10 +88,12 @@ def run_masscan(output_file_path, target, ports, rate):
     except subprocess.CalledProcessError as e:
         print(f"Error running Masscan: {e}")
 
+    # 判断masscan扫描结果是否为空
     if not masscan_output.strip():
         print("Masscan scan result is empty.")
         exit(1)
-    
+
+    # 使用多线程扫描每个 IP 的端口
     try:
         ip_ports_mapping = parse_masscan_output(masscan_output)
 
